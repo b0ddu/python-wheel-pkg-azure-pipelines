@@ -14,7 +14,13 @@ steps:
     python -m pip install --upgrade pip
     python -m pip install --upgrade build setuptools twine
     python -m build
-    pip install -r requirements.txt
+    python setup.py sdist bdist_wheel
   displayName: 'Install dependencies'
   
+- task: TwineAuthenticate@1
+  inputs:
+    artifactFeed: ado-python-wheel-feed
 
+- script: |
+    twine upload -r ado-wheel-pkg-feed dist/*
+  displayName: 'Push to Artifacts'
