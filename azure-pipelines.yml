@@ -20,7 +20,7 @@ steps:
   
 - task: TwineAuthenticate@1
   inputs:
-    artifactFeed: ado-python-wheel-feed
+    artifactFeed: ado-wheel-pkg-feed
 
 - script: |
     twine upload -r ado-wheel-pkg-feed --config-file $(PYPIRC_PATH) dist/*.whl
