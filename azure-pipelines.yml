@@ -1,0 +1,20 @@
+
+trigger:
+- main
+
+pool: Self-Hosted-Pool
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.9'
+  displayName: 'Use Python 3.9'
+
+- script: |
+    python -m pip install --upgrade pip
+    python -m pip install --upgrade build setuptools twine
+    python -m build
+    pip install -r requirements.txt
+  displayName: 'Install dependencies'
+  
+
