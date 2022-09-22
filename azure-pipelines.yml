@@ -13,7 +13,6 @@ steps:
 - script: |
     python -m pip install --upgrade pip
     python -m pip install --upgrade build setuptools twine
-    python -m build
     python setup.py sdist bdist_wheel
   displayName: 'Install dependencies'
   
@@ -22,5 +21,5 @@ steps:
     artifactFeed: ado-python-wheel-feed
 
 - script: |
-    twine upload -r ado-wheel-pkg-feed dist/*
+    twine upload -r ado-wheel-pkg-feed --config-file $(PYPIRC_PATH) dist/*.whl
   displayName: 'Push to Artifacts'
