@@ -14,7 +14,8 @@ steps:
     python -m pip install --upgrade pip
     python -m pip install --upgrade build setuptools twine
     pip install twine keyring artifacts-keyring
-    echo "$(PYPIRC_PATH)"
+    echo %PYPIRC_PATH%
+    echo %USERNAME%
     python setup.py sdist bdist_wheel
   displayName: 'Install dependencies'
   
