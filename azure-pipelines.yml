@@ -2,6 +2,10 @@
 trigger:
 - main
 
+variables:
+- name: PYPIRC_PATH
+  value: .pypirc
+
 pool: Self-Hosted-Pool
 
 steps:
