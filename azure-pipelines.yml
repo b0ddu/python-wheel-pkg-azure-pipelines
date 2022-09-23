@@ -18,7 +18,7 @@ steps:
     python -m pip install --upgrade pip
     python -m pip install --upgrade build setuptools twine
     python -m pip install twine keyring artifacts-keyring
-    python setup.py sdist bdist_wheel
+    python setup.py egg_info --tag-date sdist bdist_wheel
   displayName: 'Install dependencies'
   
 - task: TwineAuthenticate@1
