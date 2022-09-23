@@ -22,5 +22,5 @@ steps:
     artifactFeed: ado-wheel-pkg-feed
 
 - script: |
-    python -m twine upload -r ado-wheel-pkg-feed dist/*.whl
+    python -m twine upload -r ado-wheel-pkg-feed --config-file $(PYPIRC_PATH) dist/*.whl
   displayName: 'Push to Artifacts'
