@@ -2,10 +2,6 @@
 trigger:
 - main
 
-variables:
-- name: PYPIRC_PATH
-  value: .pypirc
-
 pool: Self-Hosted-Pool
 
 steps:
@@ -18,8 +14,6 @@ steps:
     python -m pip install --upgrade pip
     python -m pip install --upgrade build setuptools twine
     python -m pip install twine keyring artifacts-keyring
-    echo %PYPIRC_PATH%
-    echo %USERNAME%
     python setup.py sdist bdist_wheel
   displayName: 'Install dependencies'
   
@@ -28,5 +22,5 @@ steps:
     artifactFeed: ado-wheel-pkg-feed
 
 - script: |
-    python -m twine upload -r ado-wheel-pkg-feed --config-file $(PYPIRC_PATH) dist/*.whl
+    python -m twine upload -r ado-wheel-pkg-feed dist/*.whl
   displayName: 'Push to Artifacts'
