@@ -1,5 +1,3 @@
-environment: main
-
 trigger:
 - main
 
